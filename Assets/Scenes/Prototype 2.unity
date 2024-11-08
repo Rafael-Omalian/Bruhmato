@@ -644,10 +644,10 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 84
   m_CollisionDetection: 0
 --- !u!65 &1449424085
 BoxCollider:
@@ -1846,16 +1846,60 @@ GameObject:
   m_Component:
   - component: {fileID: 1822957757}
   - component: {fileID: 1816055645}
-  - component: {fileID: 1449424081}
   - component: {fileID: 1449424084}
   - component: {fileID: 1449424085}
+  - component: {fileID: 1449424081}
+  - component: {fileID: 1823456416}
+  - component: {fileID: 1823456415}
+  - component: {fileID: 1823456414}
   m_Layer: 0
   m_Name: MonsieurFermier
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1823456414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1823456413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9ab2941207d09545a0969367baa07d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 126446, guid: f1d6f9ead12c9234dbdb43c0cee8aaf4, type: 3}
+  baseReloadTime: 1
+  damage: 0
+  reach: 0
+--- !u!114 &1823456415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1823456413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0cea22061ad1614c9c735a214946c64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1823456416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1823456413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2e73e15fdab4414490c20496c60f5c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  atkSpeed: 1
 --- !u!1 &1823456505
 GameObject:
   m_ObjectHideFlags: 0

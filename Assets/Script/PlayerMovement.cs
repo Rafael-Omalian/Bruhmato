@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float speed = 10f;
-    [SerializeField] private float rotationSpeed = 10f;
+    [SerializeField] private float rotationSpeed = 1000f;
     private Vector3 movement;
     private Quaternion targetedRotation;
     private Rigidbody rb;
@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        targetedRotation = transform.rotation;
     }
 
     void Update()
@@ -29,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
         if (movement != Vector3.zero)
         {
             targetedRotation = Quaternion.LookRotation(movement);
-            rb.rotation = Quaternion.RotateTowards(rb.rotation, targetedRotation, rotationSpeed * Time.deltaTime);
         }
+        rb.rotation = Quaternion.RotateTowards(rb.rotation, targetedRotation, rotationSpeed * Time.deltaTime);
     }
 }
