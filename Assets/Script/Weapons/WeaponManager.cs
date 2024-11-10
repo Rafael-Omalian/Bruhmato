@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class WeaponManager : MonoBehaviour
 {
+    public GameObject[] projectiles = new GameObject[4];
     private PlayerStats pStats;
     private List<Weapons> allWeapons = new List<Weapons>();
 
