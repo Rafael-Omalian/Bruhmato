@@ -1,8 +1,12 @@
+using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using UnityEngine;
 
-public class Carrot : Weapons
+public class Cabbage : Weapons
 {
+    [SerializeField] private bool isRandom;
+
     public override void Attack()
     {
         List<Collider> enemiesToIgnore = new List<Collider>();
@@ -13,7 +17,6 @@ public class Carrot : Weapons
                 CreateProjectile(enemiesToIgnore);
                 break;
             case 3: // Niveau 3
-                CreateProjectile(enemiesToIgnore);
                 CreateProjectile(enemiesToIgnore);
                 CreateProjectile(enemiesToIgnore);
                 CreateProjectile(enemiesToIgnore);
@@ -29,8 +32,14 @@ public class Carrot : Weapons
         ProjectileScript projScript = Instantiate(projectile, transform.position, transform.rotation).GetComponent<ProjectileScript>();
         projScript.SetStats(isExplosive, isPoison, bounceIsRandom, baseDamage, baseReach, bounce, pierce);
 
-        // Change la direction du projectile pour cibler l'ennemi le plus proche
-        Collider target = GetNearestTarget(enemiesToIgnore);
+        // Change la direction du projectile pour cibler un ennemi
+        Collider target;
+        if (isRandom) {
+            target = GetRandomTarget(enemiesToIgnore);
+        } else {
+            target = GetNearestTarget(enemiesToIgnore);
+        }
+
         if (target != null)
         {
             enemiesToIgnore.Add(target);

@@ -29,6 +29,6 @@ public class Tomato : Weapons
     private void CreateProjectile(Quaternion projRotation)
     {
         ProjectileScript projScript = Instantiate(projectile, transform.position, projRotation).GetComponent<ProjectileScript>();
-        projScript.SetStats(isExplosive, isPoison, baseDamage, baseReach, bounce, pierce);
+        projScript.SetStats(isExplosive, isPoison, bounceIsRandom, baseDamage, baseReach, bounce, pierce);
     }
 }

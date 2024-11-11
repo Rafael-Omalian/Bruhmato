@@ -6,11 +6,13 @@ using UnityEngine;
 public abstract class Weapons : MonoBehaviour
 {
     // Attributs de base de l'arme
-    [SerializeField] protected GameObject projectile;
+    protected GameObject projectile;
+    [SerializeField] protected string weaponFileName;
     [SerializeField] protected int weaponLevel = 0;
     [SerializeField] protected float baseReloadTime;
     [SerializeField] protected bool isExplosive = false;
     [SerializeField] protected bool isPoison = false;
+    [SerializeField] protected bool bounceIsRandom = false;
     [SerializeField] protected float baseDamage;
     [SerializeField] protected float baseReach;
     [SerializeField] protected int bounce;
@@ -23,6 +25,7 @@ public abstract class Weapons : MonoBehaviour
     void Start()
     {
         weaponManager = GetComponent<WeaponManager>();
+        projectile = Resources.Load("Projectiles/" + weaponFileName) as GameObject;
     }
 
     // Gestion du temps de recharge
@@ -79,6 +82,63 @@ public abstract class Weapons : MonoBehaviour
             }
 
             return nearestEnemy;
+        }
+        
+        // Si aucun ennemi ne peut etre cible, retourne null
+        return null;
+    }
+
+    // Assigne une cible aleatoire au projectile
+    protected virtual Collider GetRandomTarget(List<Collider> enemiesToIgnore = null)
+    {
+        List<Collider> enemies = Physics.OverlapSphere(transform.position, baseReach, 1 << 3).ToList();
+
+        // Supprime certains ennemis de la liste des cibles
+        if (enemiesToIgnore != null)
+        {
+            foreach (Collider col in enemiesToIgnore)
+            {
+                if (enemies.Contains(col))
+                {
+                    enemies.Remove(col);
+                }
+            }
+        }
+
+        if (enemies.Count > 0)
+        {
+            // Initialise l'ennemi au hasard
+            Collider targetedEnemy = enemies[Random.Range(0, enemies.Count)];
+
+            return targetedEnemy;
+        }
+        
+        // Si aucun ennemi ne peut etre cible, retourne null
+        return null;
+    }
+
+    // Assigne comme cible l'ennemi entoure par le plus d'autres ennemis
+    protected virtual Collider GetBiggestPack(float range)
+    {
+        Collider[] enemies = Physics.OverlapSphere(transform.position, baseReach, 1 << 3);
+
+        if (enemies.Length > 0)
+        {
+            Collider targetedEnemy = enemies[0];
+            int count = Physics.OverlapSphere(enemies[0].transform.position, range, 1 << 3).Length;
+
+            for (int i = 1; i < enemies.Length; i++)
+            {
+                int tempCount = Physics.OverlapSphere(enemies[i].transform.position, range, 1 << 3).Length;
+
+                if (tempCount > count)
+                {
+                    count = tempCount;
+                    targetedEnemy = enemies[i];
+                }                
+            }
+
+            return targetedEnemy;
         }
         
         // Si aucun ennemi ne peut etre cible, retourne null
