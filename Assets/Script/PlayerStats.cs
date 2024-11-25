@@ -5,9 +5,26 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour
 {
     [SerializeField] private float atkSpeed = 1.0f;
+    [SerializeField] protected float vie;
+    [SerializeField] protected float vieMax = 15f;
 
+
+    private void Start()
+    {
+        vie = vieMax;
+    }
     public float GetAtkSpeed()
     {
         return atkSpeed;
+    }
+
+    public void PlayerTakesDamage(float damageAmount)
+    {
+        vie -= damageAmount;
+
+        if (vie <= 0)
+        {
+            Debug.Log("Joueur mort");
+        }
     }
 }
