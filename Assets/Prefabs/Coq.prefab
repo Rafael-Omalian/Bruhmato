@@ -377,7 +377,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 917378477234056838}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 513c5b8e69f3ef04199c07213bad13c1, type: 3}
+  m_Script: {fileID: 11500000, guid: d6f1019fe61d8e8408b4caa2a95f5594, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ennemiFileName: 
@@ -385,8 +385,8 @@ MonoBehaviour:
   baseReach: 0
   vie: 0
   vieMax: 10
-  vitesse: 2
-  atkSpeed: 1
+  vitesse: 1
+  atkSpeed: 2
 --- !u!1 &2242134738067090910
 GameObject:
   m_ObjectHideFlags: 0

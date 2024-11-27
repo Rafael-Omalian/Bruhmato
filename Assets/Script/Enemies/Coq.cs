@@ -9,7 +9,7 @@ public class Coq : Ennemis
 
     private void Update()
     {
-        if (Vector3.Distance(transform.position, player.position) < 2f)
+        if (Vector3.Distance(transform.position, player.position) < 1.7f)
         {
             if (!isAttacking)
             {
