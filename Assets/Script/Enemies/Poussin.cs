@@ -7,7 +7,7 @@ public class Poussin : Ennemis
     private bool isAttacking = false;
     private void Update()
     {
-        if (Vector3.Distance(transform.position, player.position) < 2f)
+        if (Vector3.Distance(transform.position, player.position) < 1.5f)
         {
             if (!isAttacking)
             {
