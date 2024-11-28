@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class Bulldog : Ennemis
 {
-    private bool isExploding;
     private Material bdMat;
 
     private void Awake()
@@ -17,20 +16,20 @@ public class Bulldog : Ennemis
     {
         if (Vector3.Distance(transform.position, player.position) < 2.5f)
         {
-            if (!isExploding)
+            if (!isAttacking)
             {
                 StartCoroutine(DelayExplosion());
             }
         }
 
-        if (isExploding)
+        if (isAttacking)
         {
             bdMat.color = new Color(bdMat.color.r + 1 * Time.deltaTime, bdMat.color.g, bdMat.color.b, bdMat.color.a); //rgb, alpha
         }
     }
     private void FixedUpdate()
     {
-        if (!isExploding)
+        if (!isAttacking)
         {
             Mouvement();
         }
@@ -38,7 +37,7 @@ public class Bulldog : Ennemis
 
     public override void Attack()
     {
-        isExploding = true;
+        isAttacking = true;
         zoneAttaque.SetActive(true);
         Debug.Log("Bulldog explose");
         Destroy(gameObject, 3f); //temps -> 3
@@ -51,19 +50,10 @@ public class Bulldog : Ennemis
         rb.MovePosition(rb.position + Vector3.Normalize(player.transform.position - rb.position) * vitesse * Time.deltaTime);
         transform.LookAt(new Vector3(player.position.x, rb.position.y, player.position.z));
     }
-    public void TakesDamage(float baseDamage)
-    {
-        vie -= baseDamage;
 
-        if (vie <= 0)
-        {
-            Debug.Log("Bulldog mort");
-            Destroy(this);
-        }
-    }
     public IEnumerator DelayExplosion()
     {
-        isExploding = true;
+        isAttacking = true;
         yield return new WaitForSeconds(1.5f);
         zoneAttaque.SetActive(true);
         Debug.Log("Bulldog explose");

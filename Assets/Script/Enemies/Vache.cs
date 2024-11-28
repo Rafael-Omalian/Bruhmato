@@ -7,7 +7,6 @@ public class Vache : Ennemis
 {
     public GameObject bullet;
     public Transform bulletPos;
-    private bool isShooting = false;
     private bool isFlee = false;
 
     void Update()
@@ -22,7 +21,7 @@ public class Vache : Ennemis
         {
             isFlee = false;
         }
-        if (distance > 14 && isFlee == false && !isShooting)
+        if (distance > 14 && isFlee == false && !isAttacking)
         {
             StartCoroutine(DelayShoot());
         }
@@ -40,7 +39,7 @@ public class Vache : Ennemis
 
     public override void Attack()
     {
-        isShooting = true;
+        isAttacking = true;
 
     }
 
@@ -49,24 +48,15 @@ public class Vache : Ennemis
     {
         rb.MovePosition(rb.position - Vector3.Normalize(player.transform.position - rb.position) * vitesse * Time.deltaTime);
     }
-    public void TakesDamage(float baseDamage)
-    {
-        vie -= baseDamage;
 
-        if (vie <= 0)
-        {
-            Debug.Log("Vache mort");
-            Destroy(this);
-        }
-    }
     public IEnumerator DelayShoot()
     {
-        isShooting = true;
+        isAttacking = true;
         yield return new WaitForSeconds(0.5f);
         Instantiate(bullet, bulletPos.position, Quaternion.identity);
         Debug.Log("Vache tire");
         yield return new WaitForSeconds(0.01f);
-        isShooting = false;
+        isAttacking = false;
 
     }
 

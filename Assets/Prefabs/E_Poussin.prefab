@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5939944422067750151}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ChickRig_FootR_AuxSHJnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4848956062232609696}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ChickRig_l_Leg_AuxSHJnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,9 +75,9 @@ GameObject:
   - component: {fileID: 3179421695391687554}
   - component: {fileID: 2850568434018169356}
   - component: {fileID: 1535260709620303779}
-  m_Layer: 0
-  m_Name: Poussin
-  m_TagString: Untagged
+  m_Layer: 3
+  m_Name: E_Poussin
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -176,7 +176,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8224702161799272255}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ChickRig_Head_AuxSHJnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -207,7 +207,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 890244048342705615}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ChickRig_Tail_AuxSHJnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -239,7 +239,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3903812924961966907}
   - component: {fileID: 3040721189181848601}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SA_Animal_Chick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -330,7 +330,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5356097470183313358}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ChickRig_r_Leg_AuxSHJnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -362,7 +362,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8674385922654099366}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ChickRig_FootL_AuxSHJnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -393,7 +393,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 883727467129756166}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ChickRig_SHJntGrp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -428,7 +428,7 @@ GameObject:
   - component: {fileID: 4222969227825679468}
   - component: {fileID: 74753416696139759}
   - component: {fileID: 9048591646258719259}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ZoneAttaque
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -530,7 +530,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 831193610225505074}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ChickRig_ROOTSHJnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}

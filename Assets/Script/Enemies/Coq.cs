@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class Coq : Ennemis
 {
-    private bool isAttacking = false;
 
     private void Update()
     {
@@ -40,16 +39,7 @@ public class Coq : Ennemis
         transform.LookAt(new Vector3(player.position.x, rb.position.y, player.position.z));
     }
 
-    public void TakesDamage(float baseDamage)
-    {
-        vie -= baseDamage;
-
-        if (vie <= 0)
-        {
-            Debug.Log("Coq mort");
-            Destroy(this);
-        }
-    }
+    
 
     public IEnumerator DelayAttack()
     {

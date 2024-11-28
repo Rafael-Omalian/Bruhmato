@@ -1292,7 +1292,7 @@ GameObject:
   - component: {fileID: 2548708231883779573}
   - component: {fileID: 5752044200289086920}
   m_Layer: 3
-  m_Name: Vache
+  m_Name: E_Vache
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

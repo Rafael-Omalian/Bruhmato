@@ -7,8 +7,7 @@ public class Poulet : Ennemis
 {
     public GameObject bullet;
     public Transform bulletPos;
-    private bool isShooting = false;
-    private bool isFlee = false;
+    private bool isFleing = false;
 
     void Update()
     {
@@ -16,13 +15,13 @@ public class Poulet : Ennemis
 
         if (distance < 7)
         {
-            isFlee = true;
+            isFleing = true;
         }
         if (distance > 11)
         {
-            isFlee = false;
+            isFleing = false;
         }
-        if (distance > 7 && isFlee == false && !isShooting)
+        if (distance > 7 && isFleing == false && !isAttacking)
         {
             StartCoroutine(DelayShoot());
         }
@@ -32,7 +31,7 @@ public class Poulet : Ennemis
     private void FixedUpdate()
     {
 
-        if (isFlee)
+        if (isFleing)
         {
             Mouvement();
         }
@@ -40,7 +39,7 @@ public class Poulet : Ennemis
 
     public override void Attack()
     {
-        isShooting = true;
+        isAttacking = true;
 
     }
 
@@ -49,24 +48,15 @@ public class Poulet : Ennemis
     {
         rb.MovePosition(rb.position - Vector3.Normalize(player.transform.position - rb.position) * vitesse * Time.deltaTime);
     }
-    public void TakesDamage(float baseDamage)
-    {
-        vie -= baseDamage;
-
-        if (vie <= 0)
-        {
-            Debug.Log("Poulet mort");
-            Destroy(this);
-        }
-    }
+    
     public IEnumerator DelayShoot()
     {
-        isShooting = true;
+        isAttacking = true;
         yield return new WaitForSeconds(1.4f);
         Instantiate(bullet, bulletPos.position, Quaternion.identity);
         Debug.Log("Poulet tire");
         yield return new WaitForSeconds(0.01f);
-        isShooting = false;
+        isAttacking = false;
 
     }
 

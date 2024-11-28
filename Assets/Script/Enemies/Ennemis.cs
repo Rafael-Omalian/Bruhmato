@@ -12,7 +12,8 @@ public abstract class Ennemis : MonoBehaviour
     [SerializeField] protected float vie;
     [SerializeField] protected float vieMax;
     [SerializeField] protected float vitesse;
-    [SerializeField] private float atkSpeed;
+    [SerializeField] protected float atkSpeed;
+    protected bool isAttacking;
 
     // Info du joueur
     protected Transform player;
@@ -29,6 +30,16 @@ public abstract class Ennemis : MonoBehaviour
         zoneAttaque = transform.GetChild(2).gameObject;
     }
 
-    public abstract void Attack(); //méthode d'attaque
+    public abstract void Attack(); //methode d'attaque
     public abstract void Mouvement();
+
+    public virtual void TakesDamage(float baseDamage)
+    {
+        vie -= baseDamage;
+
+        if (vie <= 0)
+        {
+            Destroy(this.gameObject);
+        }
+    }
 }
