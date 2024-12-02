@@ -7,34 +7,48 @@ public class GameManager : MonoBehaviour
 {
     // Ensemble des ennemis qui peuvent apparaitre
     [SerializeField] private GameObject[] enemies;
+
+    // Limite de la zone d'apparition
     [SerializeField] private int bounds = 48;
+
+    // Ensemble des spawners et indicateur de celui a utiliser
     [SerializeField] private EnemySpawn[] spawners = new EnemySpawn[30];
-    private List<EnemySpawn> unusedSpawners;
-    private List<EnemySpawn> usedSpawners;
+    private int spawnerCounter = 0;
     
     void Start()
     {
-        unusedSpawners = spawners.ToList();
-        StartCoroutine(SpawningRoutine());
+        InvokeRepeating("SpawningRoutine", 1f, 1f);
     }
 
-    // Update is called once per frame
-    private IEnumerator SpawningRoutine()
+    private void SpawningRoutine()
     {
-        Vector3Int[] swarmSpawning = SwarmSpawnPoints(5, 3);
+        int random = Random.Range(0, 100);
 
-        foreach (Vector3Int spawn in swarmSpawning)
+        switch (random)
         {
-            unusedSpawners[0].transform.position = spawn;
-            unusedSpawners[0].enemyPrefab = enemies[0];
-            unusedSpawners[0].gameObject.SetActive(true);
-            unusedSpawners.RemoveAt(0);
+            case <= 50:
+                SpawnMultipleEnemies(enemies[0], GetSwarmSpawnPosition(5, 3));
+                break;
+            case <= 75:
+                SpawnSingleEnemy(enemies[1], GetSpawnPosition(bounds));
+                break;
+            case <= 100:
+                SpawnSingleEnemy(enemies[2], GetSpawnPosition(bounds));
+                break;
+            default:
+                SpawnSingleEnemy(enemies[0], GetSpawnPosition(bounds));
+                break;
         }
-
-        yield return new WaitForSeconds(2f);
     }
 
-    private Vector3Int[] SwarmSpawnPoints(int number, int range)
+// Fonction qui genere une nouvelle position dans un carre de cote range*2
+    private Vector3Int GetSpawnPosition(int range)
+    {
+        return new Vector3Int(Random.Range(-range, range+1), 0, Random.Range(-range, range+1));
+    }
+
+// Fonction d'attribution des positions aux ennemis qui apparaissent en groupe
+    private Vector3Int[] GetSwarmSpawnPosition(int number, int range)
     {
         // Initialisation du stockage des positions
         Vector3Int[] spawnPoints = new Vector3Int[number];
@@ -44,13 +58,13 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < spawnPoints.Length; i++)
         {
-            Vector3Int newPoint = centerPoint + GetNewPosition(range);
+            Vector3Int newPoint = centerPoint + GetSpawnPosition(range);
 
             // Faire en sorte que les ennemis ne spawn pas au meme endroit
             int breaker = 0;
             while (spawnPoints.Contains(newPoint) && breaker < 20)
             {
-                newPoint = centerPoint + GetNewPosition(range);
+                newPoint = centerPoint + GetSpawnPosition(range);
                 breaker++;
             }
 
@@ -60,8 +74,24 @@ public class GameManager : MonoBehaviour
         return spawnPoints;
     }
 
-    private Vector3Int GetNewPosition(int range)
+// Fonction d'apparition d'un ennemi seul
+    public void SpawnSingleEnemy(GameObject enemy, Vector3Int position)
     {
-        return new Vector3Int(Random.Range(-range, range+1), 0, Random.Range(-range, range+1));
+        spawners[spawnerCounter].transform.position = position;
+        spawners[spawnerCounter].enemyPrefab = enemy;
+        spawners[spawnerCounter].gameObject.SetActive(true);
+        spawnerCounter++;
+        if (spawnerCounter >= spawners.Length)
+        {
+            spawnerCounter = 0;
+        }
+    }
+// Fonction d'apparition d'un groupe d'ennemis
+    public void SpawnMultipleEnemies(GameObject enemy, Vector3Int[] positions)
+    {
+        foreach (Vector3Int position in positions)
+        {
+            SpawnSingleEnemy(enemy, position);
+        }
     }
 }

@@ -22,12 +22,16 @@ public abstract class Ennemis : MonoBehaviour
     protected Rigidbody rb;
     protected GameObject zoneAttaque;
 
+    // Gestion des animations
+    protected Animator anim;
+
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         rb = GetComponent<Rigidbody>();
+        anim = GetComponent<Animator>();
         vie = vieMax;
-        zoneAttaque = transform.GetChild(2).gameObject;
+        if(transform.childCount > 2) {zoneAttaque = transform.GetChild(2).gameObject;}
     }
 
     public abstract void Attack(); //methode d'attaque

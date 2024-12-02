@@ -16,10 +16,14 @@ public class Poulet : Ennemis
         if (distance < 7)
         {
             isFleing = true;
+            // Gestion de l'animation
+            anim.SetBool("IsMoving", true);
         }
         if (distance > 11)
         {
             isFleing = false;
+            // Gestion de l'animation
+            anim.SetBool("IsMoving", false);
         }
         if (distance > 7 && isFleing == false && !isAttacking)
         {

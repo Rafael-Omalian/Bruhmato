@@ -75,6 +75,7 @@ GameObject:
   - component: {fileID: 3179421695391687554}
   - component: {fileID: 2850568434018169356}
   - component: {fileID: 1535260709620303779}
+  - component: {fileID: 4266195166139935160}
   m_Layer: 3
   m_Name: E_Poussin
   m_TagString: Enemy
@@ -159,7 +160,7 @@ Rigidbody:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
@@ -167,6 +168,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &4266195166139935160
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2413932138863299533}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 8
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.2109027, y: 11.675614, z: 7.7525268}
+  m_Center: {x: -0.0000023168989, y: 5.837807, z: 0.24290845}
 --- !u!1 &2915846482191055729
 GameObject:
   m_ObjectHideFlags: 0

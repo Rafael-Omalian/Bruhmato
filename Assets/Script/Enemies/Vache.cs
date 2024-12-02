@@ -16,10 +16,14 @@ public class Vache : Ennemis
         if (distance < 14)
         {
             isFlee = true;
+            // Gestion de l'animation
+            anim.SetBool("IsMoving", true);
         }
         if (distance > 18)
         {
             isFlee = false;
+            // Gestion de l'animation
+            anim.SetBool("IsMoving", false);
         }
         if (distance > 14 && isFlee == false && !isAttacking)
         {
