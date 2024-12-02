@@ -1,4 +1,4 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -12,6 +12,10 @@ public class WeaponManager : MonoBehaviour
     {
         pStats = GetComponent<PlayerStats>();
         allWeapons = GetComponents<Weapons>().ToList();
+        foreach (Weapons weapon in allWeapons)
+        {
+            weapon.SetPlayerStats(pStats);
+        }
     }
 
     public void NewAttack(Weapons weaponScript)
@@ -25,6 +29,23 @@ public class WeaponManager : MonoBehaviour
         foreach (Weapons weapon in allWeapons)
         {
             weapon.Attack();
+        }
+    }
+
+    public void GetWeapon(WeaponSO newWeapon)
+    {
+        // Si le joueur n'a pas l'arme, l'ajoute
+        if (!gameObject.GetComponent(Type.GetType(newWeapon.weaponFileName)))
+        {
+            gameObject.AddComponent(Type.GetType(newWeapon.weaponFileName));
+            allWeapons.Add(gameObject.GetComponent(Type.GetType(newWeapon.weaponFileName)) as Weapons);
+            allWeapons[allWeapons.Count - 1].SetBaseStats(newWeapon);
+            allWeapons[allWeapons.Count - 1].SetPlayerStats(pStats);
+            Debug.Log("Armes ajoutee");
+        } else {
+            // Si le joueur a deja l'arme, elle s'ameliore
+            Weapons newWeaponScript = gameObject.GetComponent(Type.GetType(newWeapon.weaponFileName)) as Weapons;
+            newWeaponScript.LevelUp();
         }
     }
 }

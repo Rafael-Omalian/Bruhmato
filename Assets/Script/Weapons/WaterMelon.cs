@@ -27,7 +27,7 @@ public class WaterMelon : Weapons
     private void CreateProjectile(float range)
     {
         ProjectileScript projScript = Instantiate(projectile, transform.position, transform.rotation).GetComponent<ProjectileScript>();
-        projScript.SetStats(isExplosive, isPoison, bounceIsRandom, baseDamage, baseReach, bounce, pierce, range);
+        projScript.SetStats(isExplosive, isPoison, bounceIsRandom, baseDamage + pStats.GetDamage(), baseReach + pStats.GetReach(), bounce, pierce, range);
 
         // Change la direction du projectile pour cibler l'ennemi le plus proche
         Collider target = GetBiggestPack(range);

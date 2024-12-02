@@ -6,9 +6,9 @@ using UnityEngine;
 public abstract class Weapons : MonoBehaviour
 {
     // Attributs de base de l'arme
-    protected GameObject projectile;
+    [SerializeField] protected GameObject projectile;
     [SerializeField] protected string weaponFileName;
-    [SerializeField] protected int weaponLevel = 0;
+    [SerializeField] protected int weaponLevel = 1;
     [SerializeField] protected float baseReloadTime;
     [SerializeField] protected bool isExplosive = false;
     [SerializeField] protected bool isPoison = false;
@@ -21,11 +21,27 @@ public abstract class Weapons : MonoBehaviour
     // Attributs de gestion
     protected float reloadTime;
     protected WeaponManager weaponManager;
+    protected PlayerStats pStats;
     
     void Start()
     {
         weaponManager = GetComponent<WeaponManager>();
         projectile = Resources.Load("Projectiles/" + weaponFileName) as GameObject;
+    }
+
+    // Assigne les statistiques de l'arme
+    public void SetBaseStats(WeaponSO newWeapon)
+    {
+        weaponFileName = newWeapon.weaponFileName;
+        baseReloadTime = newWeapon.baseReloadTime;
+        isExplosive = newWeapon.isExplosive;
+        isPoison = newWeapon.isPoison;
+        bounceIsRandom = newWeapon.bounceIsRandom;
+        baseDamage = newWeapon.baseDamage;
+        baseReach = newWeapon.baseReach;
+        bounce = newWeapon.bounce;
+        pierce = newWeapon.pierce;
+        
     }
 
     // Gestion du temps de recharge
@@ -44,7 +60,19 @@ public abstract class Weapons : MonoBehaviour
     // Assgine le temps de recharge
     public virtual void SetReloadTime(float atkSpeed)
     {
-        reloadTime = baseReloadTime * atkSpeed;
+        reloadTime = baseReloadTime / atkSpeed;
+    }
+
+    // Assigne les statistiques du joueur
+    public virtual void SetPlayerStats(PlayerStats pStats)
+    {
+        this.pStats = pStats;
+    }
+
+    // Augmente le niveau de l'arme
+    public virtual void LevelUp()
+    {
+        weaponLevel ++;
     }
 
     // Assigne la cible la plus proche au projectile

@@ -27,7 +27,7 @@ public class Carrot : Weapons
     private void CreateProjectile(List<Collider> enemiesToIgnore)
     {
         ProjectileScript projScript = Instantiate(projectile, transform.position, transform.rotation).GetComponent<ProjectileScript>();
-        projScript.SetStats(isExplosive, isPoison, bounceIsRandom, baseDamage, baseReach, bounce, pierce);
+        projScript.SetStats(isExplosive, isPoison, bounceIsRandom, baseDamage + pStats.GetDamage(), baseReach + pStats.GetReach(), bounce, pierce);
 
         // Change la direction du projectile pour cibler l'ennemi le plus proche
         Collider target = GetNearestTarget(enemiesToIgnore);

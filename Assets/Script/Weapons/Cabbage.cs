@@ -30,7 +30,7 @@ public class Cabbage : Weapons
     private void CreateProjectile(List<Collider> enemiesToIgnore)
     {
         ProjectileScript projScript = Instantiate(projectile, transform.position, transform.rotation).GetComponent<ProjectileScript>();
-        projScript.SetStats(isExplosive, isPoison, bounceIsRandom, baseDamage, baseReach, bounce, pierce);
+        projScript.SetStats(isExplosive, isPoison, bounceIsRandom, baseDamage + pStats.GetDamage(), baseReach + pStats.GetReach(), bounce, pierce);
 
         // Change la direction du projectile pour cibler un ennemi
         Collider target;
