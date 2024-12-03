@@ -1397,13 +1397,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eb3589ba26a9a843b8ea7078feb4fe9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ennemiFileName: 
-  damageAmount: 0
+  damageAmount: 2
   baseReach: 0
   vie: 0
   vieMax: 20
   vitesse: 2
   atkSpeed: 2
+  experienceValue: 10
+  experience: {fileID: 1204659047659727091, guid: 35a2fa25edc69054a8c5533c00fd963d, type: 3}
   bullet: {fileID: 8009516560848595666, guid: 8ee99109cc30f3144b5e449bafde709c, type: 3}
   bulletPos: {fileID: 5598405299946354338}
 --- !u!1 &7669569196060250690

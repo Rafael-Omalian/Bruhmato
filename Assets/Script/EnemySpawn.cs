@@ -10,9 +10,11 @@ public class EnemySpawn : MonoBehaviour
     private Material[] materials = new Material[2];
     private Color ogColor;
     private bool switchColor;
+    private GameManager gameManager;
 
     void Awake()
     {
+        gameManager = transform.parent.parent.GetComponent<GameManager>();
         materials[0] = GetComponent<MeshRenderer>().material;
         materials[1] = transform.GetChild(0).GetComponent<MeshRenderer>().material;
         ogColor = materials[0].color;
@@ -57,7 +59,8 @@ public class EnemySpawn : MonoBehaviour
         Collider[] player = Physics.OverlapSphere(transform.position, 1.5f, 1 << 6);
         if (player.Length == 0)
         {
-            Instantiate(enemyPrefab, transform.position, transform.rotation);
+            GameObject enemy = Instantiate(enemyPrefab, transform.position, transform.rotation);
+            gameManager.EnemiesController(enemy);
         }
         gameObject.SetActive(false);
     }

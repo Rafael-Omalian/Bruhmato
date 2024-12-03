@@ -12,6 +12,21 @@ public class PlayerLevelManager : MonoBehaviour
     // Attribut pour l'activation du choix d'amelioration
     [SerializeField] private UpgradeMenu upgradeMenu;
 
+    void Update()
+    {
+        Collider[] xp = Physics.OverlapSphere(transform.position, 3, 1 << 7);
+        if (xp.Length > 0)
+        {
+            for (int i = 0; i < xp.Length; i++)
+            {
+                if (xp[i].CompareTag("XP"))
+                {
+                    xp[i].GetComponent<ExperienceManager>().Attraction(transform);
+                }
+            }
+        }
+    }
+
     public void GetExp(float expValue)
     {
         currExp += expValue;

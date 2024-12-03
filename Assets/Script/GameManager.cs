@@ -15,6 +15,10 @@ public class GameManager : MonoBehaviour
     // Ensemble des spawners et indicateur de celui a utiliser
     [SerializeField] private EnemySpawn[] spawners = new EnemySpawn[30];
     private int spawnerCounter = 0;
+
+    // Ensemble des ennemis deja spawn
+    private List<GameObject> spawnedEnemies = new List<GameObject>();
+    [SerializeField] private int maxEnemies = 100;
     
     void Start()
     {
@@ -93,6 +97,17 @@ public class GameManager : MonoBehaviour
         foreach (Vector3Int position in positions)
         {
             SpawnSingleEnemy(enemy, position);
+        }
+    }
+
+// Controle du nombre d'ennemis vivants
+    public void EnemiesController(GameObject enemy)
+    {
+        spawnedEnemies.Add(enemy);
+        if (spawnedEnemies.Count >= maxEnemies)
+        {
+            Destroy(spawnedEnemies[0]);
+            spawnedEnemies.RemoveAt(0);
         }
     }
 }

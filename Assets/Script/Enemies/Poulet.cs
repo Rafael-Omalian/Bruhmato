@@ -8,6 +8,12 @@ public class Poulet : Ennemis
     public GameObject bullet;
     public Transform bulletPos;
     private bool isFleing = false;
+    private GameManager gameManager;
+
+    void Awake()
+    {
+        gameManager = GameObject.FindWithTag("GameController").GetComponent<GameManager>();
+    }
 
     void Update()
     {
@@ -57,7 +63,8 @@ public class Poulet : Ennemis
     {
         isAttacking = true;
         yield return new WaitForSeconds(1.4f);
-        Instantiate(bullet, bulletPos.position, Quaternion.identity);
+        GameObject enemy = Instantiate(bullet, bulletPos.position, Quaternion.identity);
+        gameManager.EnemiesController(enemy);
         Debug.Log("Poulet tire");
         yield return new WaitForSeconds(0.01f);
         isAttacking = false;

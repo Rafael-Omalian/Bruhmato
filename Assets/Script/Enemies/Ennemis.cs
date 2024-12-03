@@ -6,7 +6,8 @@ using UnityEngine;
 public abstract class Ennemis : MonoBehaviour
 {
     protected GameObject attaque;
-    [SerializeField] protected string ennemiFileName;
+
+    [Header("Infos de l'ennemi")]
     [SerializeField] protected float damageAmount;
     [SerializeField] protected float baseReach;
     [SerializeField] protected float vie;
@@ -24,6 +25,11 @@ public abstract class Ennemis : MonoBehaviour
 
     // Gestion des animations
     protected Animator anim;
+
+    // Generation de l'experience
+    [Header("Generation de l'experience")]
+    [SerializeField] protected int experienceValue;
+    [SerializeField] protected GameObject experience;
 
     private void Start()
     {
@@ -44,6 +50,13 @@ public abstract class Ennemis : MonoBehaviour
         if (vie <= 0)
         {
             Destroy(this.gameObject);
+            GenerateExp();
         }
+    }
+
+    public virtual void GenerateExp()
+    {
+        ExperienceManager expManager = Instantiate(experience, new Vector3 (transform.position.x, 0.3f, transform.position.z), Quaternion.identity).GetComponent<ExperienceManager>(); //generation de l'experience
+        expManager.SetExp(experienceValue);
     }
 }

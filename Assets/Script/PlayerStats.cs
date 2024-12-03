@@ -46,7 +46,7 @@ public class PlayerStats : MonoBehaviour
 // Augmentation des statistiques
     public void StatUpgrade(Upgrade upgrade)
     {
-        atkSpeed /= upgrade.atkSpeed;
+        atkSpeed += upgrade.atkSpeed;
         vie += upgrade.vie;
         vieMax += upgrade.vieMax;
         damage += upgrade.damage;

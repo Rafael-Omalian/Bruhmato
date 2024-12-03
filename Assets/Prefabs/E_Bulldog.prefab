@@ -71,13 +71,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb626f4d3d6375044a0bd7a020be9f6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ennemiFileName: 
-  damageAmount: 0
+  damageAmount: 10
   baseReach: 0
   vie: 0
   vieMax: 2
   vitesse: 2
   atkSpeed: 2
+  experienceValue: 5
+  experience: {fileID: 1204659047659727091, guid: 35a2fa25edc69054a8c5533c00fd963d, type: 3}
 --- !u!65 &7738644118435462989
 BoxCollider:
   m_ObjectHideFlags: 0
