@@ -235,7 +235,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 4300014, guid: 693459689483f9e4aa5a1a6e8b37269e, type: 3}
+  m_Mesh: {fileID: 4300010, guid: 693459689483f9e4aa5a1a6e8b37269e, type: 3}
   m_Bones:
   - {fileID: 7285747543688766769}
   - {fileID: 4215034036822913676}
@@ -275,7 +275,7 @@ GameObject:
   - component: {fileID: 1610010137349544845}
   - component: {fileID: 4625292660761310809}
   m_Layer: 3
-  m_Name: E_Coq
+  m_Name: E_Canard
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -380,13 +380,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6f1019fe61d8e8408b4caa2a95f5594, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAmount: 1
+  damageAmount: 2
   baseReach: 0
   vie: 0
-  vieMax: 2
-  vitesse: 1
+  vieMax: 5
+  vitesse: 2
   atkSpeed: 2
-  experienceValue: 1
+  experienceValue: 2
   experience: {fileID: 1204659047659727091, guid: 35a2fa25edc69054a8c5533c00fd963d, type: 3}
 --- !u!1 &2242134738067090910
 GameObject:

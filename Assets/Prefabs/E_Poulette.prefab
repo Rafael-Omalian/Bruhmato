@@ -74,7 +74,7 @@ MonoBehaviour:
   damageAmount: 0
   baseReach: 0
   vie: 0
-  vieMax: 5
+  vieMax: 10
   vitesse: 2
   atkSpeed: 2
   experienceValue: 5

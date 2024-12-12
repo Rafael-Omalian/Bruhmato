@@ -42,7 +42,7 @@ public class PlayerLevelManager : MonoBehaviour
     private void LevelUp()
     {
         level++;
-        requiredToNextLevel = level * 10f *1.25f; // Calcule du prochain palier de niveau
+        requiredToNextLevel = level * 10; // Calcule du prochain palier de niveau
         upgradeMenu.LevelUp();
     }
 }

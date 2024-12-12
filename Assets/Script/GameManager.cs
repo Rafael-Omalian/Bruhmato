@@ -19,31 +19,51 @@ public class GameManager : MonoBehaviour
     // Ensemble des ennemis deja spawn
     private List<GameObject> spawnedEnemies = new List<GameObject>();
     [SerializeField] private int maxEnemies = 100;
+
+    // Prefab des caisses
+    [SerializeField] GameObject cratePrefab;
     
     void Start()
     {
-        InvokeRepeating("SpawningRoutine", 1f, 1f);
+        StartCoroutine("SpawningRoutine");
     }
 
-    private void SpawningRoutine()
+    private IEnumerator SpawningRoutine()
     {
-        int random = Random.Range(0, 100);
+        // Wave 1
+        SpawnMultipleEnemies(enemies[0], GetSwarmSpawnPosition(5, 3));
+        yield return new WaitForSeconds(5.0f);
+        SpawnMultipleEnemies(enemies[0], GetSwarmSpawnPosition(5, 3));
+        yield return new WaitForSeconds(5.0f);
 
-        switch (random)
+        // Wave 2
+        SpawnMultipleEnemies(enemies[0], GetSwarmSpawnPosition(5, 3));
+        yield return new WaitForSeconds(2.0f);
+        for (int i = 0; i < 5; i++)
         {
-            case <= 50:
-                SpawnMultipleEnemies(enemies[0], GetSwarmSpawnPosition(5, 3));
-                break;
-            case <= 75:
-                SpawnSingleEnemy(enemies[1], GetSpawnPosition(bounds));
-                break;
-            case <= 100:
-                SpawnSingleEnemy(enemies[2], GetSpawnPosition(bounds));
-                break;
-            default:
-                SpawnSingleEnemy(enemies[0], GetSpawnPosition(bounds));
-                break;
+            SpawnSingleEnemy(enemies[1], GetSpawnPosition(bounds));
         }
+        yield return new WaitForSeconds(3.0f);
+        SpawnMultipleEnemies(enemies[0], GetSwarmSpawnPosition(5, 3));
+        yield return new WaitForSeconds(5.0f);
+
+        // Premiere caisse
+        SpawnCrate();
+        
+        // Wave 3
+        SpawnMultipleEnemies(enemies[0], GetSwarmSpawnPosition(5, 3));
+        yield return new WaitForSeconds(2.0f);
+        for (int i = 0; i < 5; i++)
+        {
+            SpawnSingleEnemy(enemies[1], GetSpawnPosition(bounds));
+        }
+        yield return new WaitForSeconds(2.0f);
+        SpawnMultipleEnemies(enemies[0], GetSwarmSpawnPosition(5, 3));
+        yield return new WaitForSeconds(2.0f);
+        SpawnSingleEnemy(enemies[2], GetSpawnPosition(bounds));
+        yield return new WaitForSeconds(2.0f);
+        SpawnMultipleEnemies(enemies[0], GetSwarmSpawnPosition(5, 3));
+        yield return new WaitForSeconds(2.0f);
     }
 
 // Fonction qui genere une nouvelle position dans un carre de cote range*2
@@ -80,7 +100,7 @@ public class GameManager : MonoBehaviour
     }
 
 // Fonction d'apparition d'un ennemi seul
-    public void SpawnSingleEnemy(GameObject enemy, Vector3Int position)
+    private void SpawnSingleEnemy(GameObject enemy, Vector3Int position)
     {
         spawners[spawnerCounter].transform.position = position;
         spawners[spawnerCounter].enemyPrefab = enemy;
@@ -92,12 +112,18 @@ public class GameManager : MonoBehaviour
         }
     }
 // Fonction d'apparition d'un groupe d'ennemis
-    public void SpawnMultipleEnemies(GameObject enemy, Vector3Int[] positions)
+    private void SpawnMultipleEnemies(GameObject enemy, Vector3Int[] positions)
     {
         foreach (Vector3Int position in positions)
         {
             SpawnSingleEnemy(enemy, position);
         }
+    }
+
+// Apparition des caisses d'armes
+    public void SpawnCrate()
+    {
+        Instantiate(cratePrefab, GetSpawnPosition(bounds), Quaternion.identity);
     }
 
 // Controle du nombre d'ennemis vivants

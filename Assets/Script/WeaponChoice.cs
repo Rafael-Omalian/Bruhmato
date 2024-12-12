@@ -17,6 +17,7 @@ public class WeaponChoice : MonoBehaviour
 
     void OnEnable()
     {
+        Time.timeScale = 0;
         RandomChoices();
     }
 

@@ -1997,8 +1997,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies:
   - {fileID: 917378477234056838, guid: 226b6107583b00d44baacce6b826751f, type: 3}
+  - {fileID: 917378477234056838, guid: 49a89658a22e4e04b87453d422d0bc8c, type: 3}
   - {fileID: 16172437413693393, guid: 3707f73c47ef9b045a2b2b19c5b17c83, type: 3}
-  - {fileID: 14114140399302199, guid: 1c634d38e77b874488706476892638ce, type: 3}
+  - {fileID: 16172437413693393, guid: 3707f73c47ef9b045a2b2b19c5b17c83, type: 3}
   bounds: 48
   spawners:
   - {fileID: 1793776218}
@@ -2032,6 +2033,7 @@ MonoBehaviour:
   - {fileID: 1214979331}
   - {fileID: 1750251213}
   maxEnemies: 100
+  cratePrefab: {fileID: 100000, guid: 04a688fd3fbb15341a066b95ea1bc17e, type: 3}
 --- !u!4 &837186967
 Transform:
   m_ObjectHideFlags: 0
@@ -5686,6 +5688,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0cea22061ad1614c9c735a214946c64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponChoice: {fileID: 946082549}
 --- !u!114 &1823456416
 MonoBehaviour:
   m_ObjectHideFlags: 0

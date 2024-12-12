@@ -7,6 +7,7 @@ public class WeaponManager : MonoBehaviour
 {
     private PlayerStats pStats;
     private List<Weapons> allWeapons = new List<Weapons>();
+    [SerializeField] GameObject weaponChoice;
 
     void Start()
     {
@@ -46,6 +47,14 @@ public class WeaponManager : MonoBehaviour
             // Si le joueur a deja l'arme, elle s'ameliore
             Weapons newWeaponScript = gameObject.GetComponent(Type.GetType(newWeapon.weaponFileName)) as Weapons;
             newWeaponScript.LevelUp();
+        }
+    }
+
+    void OnTriggerEnter(Collider col)
+    {
+        if (col.CompareTag("Weapon"))
+        {
+            weaponChoice.SetActive(true);
         }
     }
 }
