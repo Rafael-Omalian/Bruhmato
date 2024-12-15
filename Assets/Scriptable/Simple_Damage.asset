@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Simple_Damage
   m_EditorClassIdentifier: 
   upgradeName: Lancer violent
-  upgradeSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  upgradeSprite: {fileID: 21300000, guid: ed1040a00dc884dc8a1cecce7ccc33c4, type: 3}
   upgradeDesc: "Augmente les d\xE9g\xE2ts du joueur de 1."
   atkSpeed: 0
   vie: 0

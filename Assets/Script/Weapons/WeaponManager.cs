@@ -13,6 +13,10 @@ public class WeaponManager : MonoBehaviour
     {
         pStats = GetComponent<PlayerStats>();
         allWeapons = GetComponents<Weapons>().ToList();
+
+        GetWeapon(GameState.player.startWeapon);
+
+        // Assigne les statistiques du joueur aux armes
         foreach (Weapons weapon in allWeapons)
         {
             weapon.SetPlayerStats(pStats);

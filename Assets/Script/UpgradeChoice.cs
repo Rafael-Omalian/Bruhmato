@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UpgradeChoice : MonoBehaviour
 {
@@ -14,7 +15,9 @@ public class UpgradeChoice : MonoBehaviour
     public int levels = 0;
 
     // Gestion de l'affichage
+    [SerializeField] private TMP_Text[] displayNames = new TMP_Text[3];
     [SerializeField] private TMP_Text[] displayTexts = new TMP_Text[3];
+    [SerializeField] private Image[] displaySprites = new Image[3];
 
     void OnEnable()
     {
@@ -40,7 +43,9 @@ public class UpgradeChoice : MonoBehaviour
         for (int i = 0; i < upgradesAvailable.Length; i++)
         {
             upgradesAvailable[i] = upgrades[Random.Range(0, upgrades.Length)];
-            displayTexts[i].text = upgradesAvailable[i].upgradeName;
+            displayNames[i].text = upgradesAvailable[i].upgradeName;
+            displayTexts[i].text = upgradesAvailable[i].upgradeDesc;
+            displaySprites[i].sprite = upgradesAvailable[i].upgradeSprite;
         }
     }
 }

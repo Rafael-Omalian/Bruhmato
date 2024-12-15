@@ -56,7 +56,11 @@ public class ProjectileScript : MonoBehaviour
         if (col.gameObject.tag == "Enemy")
         {
             // Applique les dommages a l'ennemi
-            col.GetComponent<Ennemis>().TakesDamage(damage);
+            Ennemis enemy = col.GetComponent<Ennemis>();
+            enemy.TakesDamage(damage);
+
+            // Applique le poison
+            if (isPoison) {enemy.Poison();}
 
             // Destruction du projectile ou rebond
             if (bounce <= 0 && pierce <= 0)

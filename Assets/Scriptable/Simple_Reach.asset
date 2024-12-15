@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Simple_Reach
   m_EditorClassIdentifier: 
   upgradeName: Gros bras
-  upgradeSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  upgradeDesc: "Augmente la port\xE9\xE9 du joueur de 1."
+  upgradeSprite: {fileID: 21300000, guid: 56113d77198ca4e7db0a78aab2221a77, type: 3}
+  upgradeDesc: "Augmente la port\xE9e du joueur de 1."
   atkSpeed: 0
   vie: 0
   vieMax: 0

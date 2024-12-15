@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Simple_AtkSpeed
   m_EditorClassIdentifier: 
   upgradeName: "Hyperactivit\xE9"
-  upgradeSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  upgradeSprite: {fileID: 21300000, guid: d2b25fbb97c8641cdbe1c030a8b8966f, type: 3}
   upgradeDesc: Augmente la vitesse d'attaque du joueur de 1.
   atkSpeed: 0.1
   vie: 0
