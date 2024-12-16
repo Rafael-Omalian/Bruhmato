@@ -62,7 +62,7 @@ public class Poulet : Ennemis
     public IEnumerator DelayShoot()
     {
         isAttacking = true;
-        yield return new WaitForSeconds(1.4f);
+        yield return new WaitForSeconds(atkSpeed);
         GameObject enemy = Instantiate(bullet, bulletPos.position, Quaternion.identity);
         gameManager.EnemiesController(enemy);
         Debug.Log("Poulet tire");

@@ -56,7 +56,7 @@ public class Vache : Ennemis
     public IEnumerator DelayShoot()
     {
         isAttacking = true;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(atkSpeed);
         Instantiate(bullet, bulletPos.position, Quaternion.identity);
         Debug.Log("Vache tire");
         yield return new WaitForSeconds(0.01f);
