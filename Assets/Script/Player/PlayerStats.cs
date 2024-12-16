@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] private float vieMax = 15f;
     [SerializeField] private float damage = 0f;
     [SerializeField] private float reach = 0f;
+    public GameObject gameoverScreen;
 
 
     private void Start()
@@ -45,6 +47,11 @@ public class PlayerStats : MonoBehaviour
         return damage;
     }
 
+    public float GetHealth()
+    {
+        return vie;
+    }
+
     public float GetReach()
     {
         return reach;
@@ -58,7 +65,18 @@ public class PlayerStats : MonoBehaviour
         if (vie <= 0)
         {
             Debug.Log("Joueur mort");
+            Time.timeScale = 0;
+            gameoverScreen.SetActive(true);
+            StartCoroutine(EndGame());
         }
+    }
+
+    // Fin du jeu
+    private IEnumerator EndGame()
+    {
+        yield return new WaitForSeconds(3);
+        Time.timeScale = 1;
+        SceneManager.LoadScene(0);
     }
 
 // Augmentation des statistiques

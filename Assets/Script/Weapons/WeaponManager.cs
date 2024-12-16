@@ -59,6 +59,7 @@ public class WeaponManager : MonoBehaviour
         if (col.CompareTag("Weapon"))
         {
             weaponChoice.SetActive(true);
+            Destroy(col.gameObject);
         }
     }
 }

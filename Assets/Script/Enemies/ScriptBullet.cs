@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ScriptBullet : MonoBehaviour
 {
+    //Attributs
     private GameObject player;
     private Rigidbody rb;
     public float force;
