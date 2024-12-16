@@ -140,7 +140,7 @@ MonoBehaviour:
   vieMax: 1
   vitesse: 2
   atkSpeed: 1
-  experienceValue: 1
+  experienceValue: 0
   experience: {fileID: 1204659047659727091, guid: 35a2fa25edc69054a8c5533c00fd963d, type: 3}
 --- !u!54 &1535260709620303779
 Rigidbody:
@@ -488,7 +488,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8742768570172782515}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1

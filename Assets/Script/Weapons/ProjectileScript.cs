@@ -55,13 +55,12 @@ public class ProjectileScript : MonoBehaviour
         // Detruit le projectile lorsqu'il touche un ennemi s'il n'a plus de perforations ou de rebonds
         if (col.gameObject.tag == "Enemy")
         {
-            // Applique les dommages a l'ennemi
+            // Recupere le script de l'ennemi
             Ennemis enemy = col.GetComponent<Ennemis>();
-            enemy.TakesDamage(damage);
 
-            // Applique le poison
-            if (isPoison) {enemy.Poison();}
-
+            // Applique le poison et les degats
+            if (isPoison) {enemy.Poison(damage);} else {enemy.TakesDamage(damage);}
+            
             // Destruction du projectile ou rebond
             if (bounce <= 0 && pierce <= 0)
             {
@@ -72,6 +71,8 @@ public class ProjectileScript : MonoBehaviour
                 }
                 else
                 {
+                    // Destruction du collider
+                    Destroy(GetComponent<Collider>());
                     // Destruction du script pour eviter d'autres degats
                     Destroy(this);
                     // Destruction du projectile un peu apres

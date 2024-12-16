@@ -19,7 +19,7 @@ public class PlayerStats : MonoBehaviour
         damage = GameState.player.damage;
         reach = GameState.player.reach;
 
-        switch (GameState.player.playerName)
+        switch (GameState.player.name)
         {
             case "Monsieur":
                 transform.GetChild(1).gameObject.SetActive(true);

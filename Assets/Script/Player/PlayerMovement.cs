@@ -10,10 +10,16 @@ public class PlayerMovement : MonoBehaviour
     private Quaternion targetedRotation;
     private Rigidbody rb;
 
+    //Animation
+    private Animator anim;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         targetedRotation = transform.rotation;
+
+        // Recuperation de l'animator
+        anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -30,6 +36,9 @@ public class PlayerMovement : MonoBehaviour
         if (movement != Vector3.zero)
         {
             targetedRotation = Quaternion.LookRotation(movement);
+            anim.SetFloat("Speed_f", 0.3f);
+        } else {
+            anim.SetFloat("Speed_f", 0.0f);
         }
         rb.rotation = Quaternion.RotateTowards(rb.rotation, targetedRotation, rotationSpeed * Time.deltaTime);
     }

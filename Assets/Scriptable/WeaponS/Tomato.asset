@@ -18,7 +18,7 @@ MonoBehaviour:
   weaponFileName: Tomato
   baseReloadTime: 1
   isExplosive: 0
-  isPoison: 0
+  isPoison: 1
   bounceIsRandom: 0
   baseDamage: 2
   baseReach: 10
