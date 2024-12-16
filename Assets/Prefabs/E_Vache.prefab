@@ -1402,7 +1402,7 @@ MonoBehaviour:
   vie: 0
   vieMax: 20
   vitesse: 2
-  atkSpeed: 1
+  atkSpeed: 0.5
   experienceValue: 10
   experience: {fileID: 1204659047659727091, guid: 35a2fa25edc69054a8c5533c00fd963d, type: 3}
   bullet: {fileID: 8009516560848595666, guid: 8ee99109cc30f3144b5e449bafde709c, type: 3}

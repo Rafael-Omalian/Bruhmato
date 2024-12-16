@@ -3262,7 +3262,7 @@ MonoBehaviour:
   - {fileID: 1591510296}
   - {fileID: 1214979331}
   - {fileID: 1750251213}
-  maxEnemies: 100
+  maxEnemies: 300
   cratePrefab: {fileID: 100000, guid: 04a688fd3fbb15341a066b95ea1bc17e, type: 3}
 --- !u!4 &837186967
 Transform:

@@ -35,6 +35,7 @@ public class ScriptBullet : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            other.GetComponent<PlayerStats>().PlayerTakesDamage(1);
             Destroy(gameObject);
         }
     }

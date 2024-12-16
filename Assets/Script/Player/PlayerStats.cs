@@ -65,7 +65,6 @@ public class PlayerStats : MonoBehaviour
         if (vie <= 0)
         {
             Debug.Log("Joueur mort");
-            Time.timeScale = 0;
             gameoverScreen.SetActive(true);
             StartCoroutine(EndGame());
         }
@@ -75,7 +74,6 @@ public class PlayerStats : MonoBehaviour
     private IEnumerator EndGame()
     {
         yield return new WaitForSeconds(3);
-        Time.timeScale = 1;
         SceneManager.LoadScene(0);
     }
 
